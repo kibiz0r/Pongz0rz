@@ -6,6 +6,7 @@ using System.Collections.Generic;
 public class Server : MonoBehaviour
 {
     public GameObject PlayerGroup;
+    public GameObject Ball;
     public GameObject Paddle;
     public Dictionary<Guid, GameObject> PaddleDictionary = new Dictionary<Guid, GameObject>();
 
@@ -27,6 +28,7 @@ public class Server : MonoBehaviour
     void OnPlayerConnected(NetworkPlayer player)
     {
         GameObject playerGroup = Network.Instantiate(PlayerGroup, Vector3.zero, Quaternion.identity, 0) as GameObject;
+        GameObject ball = Network.Instantiate(Ball, Vector3.zero, Quaternion.identity, 0) as GameObject;
         GameObject paddle = Network.Instantiate(Paddle, Vector3.zero, Quaternion.identity, 0) as GameObject;
         Guid guid = Guid.NewGuid();
         paddle.GetComponent<Paddle>().Guid = guid;
